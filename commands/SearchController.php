@@ -21,7 +21,6 @@ class SearchController extends Controller {
         $this->parser .= $parser;
         if (class_exists($this->parser)) {
             $p = new $this->parser($keyword);
-            //$p->getPage();
             $p->Result();
         } else {
             echo "Parser not found\n";
