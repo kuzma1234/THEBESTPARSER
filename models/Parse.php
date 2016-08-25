@@ -12,11 +12,11 @@ abstract class Parse {
         $this->keyword = $keyword;
         $this->client = new Curl();
         $this->client->setOptions([
-            //CURLOPT_PROXY => '178.151.149.227',
-            //CURLOPT_PROXYPORT => '80',
+            CURLOPT_PROXY => '178.151.149.227',
+            CURLOPT_PROXYPORT => '80',
             CURLOPT_ENCODING => 'UTF-8',
             CURLOPT_FOLLOWLOCATION =>  TRUE,
-            //CURLOPT_PROXYTYPE => CURLPROXY_HTTP,
+            CURLOPT_PROXYTYPE => CURLPROXY_HTTP,
             CURLOPT_TIMEOUT => null,
             CURLOPT_CONNECTTIMEOUT => null
         ]);
@@ -35,9 +35,6 @@ abstract class Parse {
         echo 'all_resuts - '.$total."\n";
         if ($total>0) {
             $this->parsePage($page);
-            if ($total>20) {
-                $total = 35;
-            }
             for ($i = $this->first; $i <= $total; $i += 10 ) {
                 $this->parsePage($this->getPage($i), round($i, -1));
             }
